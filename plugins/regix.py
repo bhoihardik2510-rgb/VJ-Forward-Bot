@@ -434,7 +434,7 @@ async def status_msg(bot, msg):
     _, status, est_time, percentage, frwd_id = msg.data.split("#")
     sts = STS(frwd_id)
     if not sts.verify():
-       fetched, forwarded, remaining = 0
+       fetched, forwarded, remaining = 0, 0, 0
     else:
        fetched, limit, forwarded = sts.get('fetched'), sts.get('limit'), sts.get('total_files')
        remaining = limit - fetched 
