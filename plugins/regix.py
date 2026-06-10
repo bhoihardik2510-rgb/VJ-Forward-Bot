@@ -160,7 +160,7 @@ async def pub_(bot, message):
                       await asyncio.sleep(10)
                       MSG = []
                 else:
-                   new_caption = custom_caption(message, caption)
+                   new_caption = custom_caption(message,caption,sts.get('total_files') + 1)
                    details = {"msg_id": message.id, "media": media(message), "caption": new_caption, 'button': button, "protect": protect}
                    await copy(user, client, details, m, sts)
                    sts.add('total_files')
@@ -311,7 +311,7 @@ async def send(bot, user, text):
 # Subscribe YouTube Channel For Amazing Bot https://youtube.com/@Tech_VJ
 # Ask Doubt on telegram @KingVJ01
 
-def custom_caption(msg, caption):
+def custom_caption(msg, caption, number=1):
   if msg.media:
     if (msg.video or msg.document or msg.audio or msg.photo):
       media = getattr(msg, msg.media.value, None)
@@ -322,7 +322,7 @@ def custom_caption(msg, caption):
         if fcaption:
           fcaption = fcaption.html
         if caption:
-          return caption.format(filename=file_name, size=get_size(file_size), caption=fcaption)
+          return caption.format(Number=number,filename=file_name,size=get_size(file_size),caption=fcaption)
         return fcaption
   return None
 
@@ -622,7 +622,7 @@ async def restart_pending_forwads(bot, user):
                       await asyncio.sleep(10)
                       MSG = []
                 else:
-                   new_caption = custom_caption(message, caption)
+                   new_caption = custom_caption(message,caption,sts.get('total_files') + 1)
                    details = {"msg_id": message.id, "media": media(message), "caption": new_caption, 'button': button, "protect": protect}
                    await copy(user, client, details, m, sts)
                    sts.add('total_files')
