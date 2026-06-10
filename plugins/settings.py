@@ -203,7 +203,7 @@ async def settings_query(bot, query):
                   "<b>process canceled !</b>",
                   reply_markup=InlineKeyboardMarkup(buttons))
      try:
-         caption.text.format(filename='', size='', caption='')
+         caption.text.format(Number=1,filename='',size='',caption='')
      except KeyError as e:
          return await caption.reply_text(
             f"<b>wrong filling {e} used in your caption. change it</b>",
